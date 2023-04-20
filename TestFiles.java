@@ -30,25 +30,20 @@ public class TestFiles {
         int number = scan2.nextInt();
         System.out.println ("Your number is " + number);
 
-
+        Comparator selectComparator;
         switch (number) {
-            case 1: Comparator selectComparator1 = new BrandComparator();
-                Collections.sort(cars, selectComparator1); break;
-            case 2: Comparator selectComparator2 = new BrandComparatorDesc();
-                Collections.sort(cars, selectComparator2); break;
-            case 3: Comparator selectComparator3 = new YearComparator();
-                    Collections.sort(cars, selectComparator3); break;
-            case 4: Comparator selectComparator4 = new YearComparatorDesc();
-                    Collections.sort(cars, selectComparator4); break;
-            case 5: Comparator selectComparator5 = new MileageComparator();
-                    Collections.sort(cars, selectComparator5); break;
-            case 6: Comparator selectComparator6 = new MileageComparatorDesc();
-                    Collections.sort(cars, selectComparator6); break;
-            default:   System.out.println ("**** Sort by Id ****");
+            case 1: selectComparator = new BrandComparator(); break;
+            case 2: selectComparator = new BrandComparatorDesc(); break;
+            case 3: selectComparator = new YearComparator(); break;
+            case 4: selectComparator = new YearComparatorDesc(); break;
+            case 5: selectComparator = new MileageComparator(); break;
+            case 6: selectComparator = new MileageComparatorDesc(); break;
+            default: System.out.println ("**** Sort by Id ****");
+                     selectComparator = new BrandComparator();
         }
-
+        if (number >= 1 && number <=6) {
+          Collections.sort(cars, selectComparator);}
         System.out.println(cars);
-
 
         System.out.println("***Find   1-Brand;2-Model;3-Year;4-Mileage");
         number = scan2.nextInt();
