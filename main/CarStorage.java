@@ -30,35 +30,36 @@ public class CarStorage  {
 
 
 
-    public void print(){
-       for ( Car each : cars ){
-                System.out.println(each);
-        }
-    }
 
-    public void sortByBrand(){
+    public List<Car> sortByBrand(){
         Comparator selectComparator = new BrandComparator();
         Collections.sort(cars, selectComparator);
+        return cars;
     }
-    public void sortByBrandDesc(){
+    public List<Car> sortByBrandDesc(){
         Comparator selectComparator = new BrandComparatorDesc();
         Collections.sort(cars, selectComparator);
+        return cars;
     }
-    public void sortByYear(){
+    public List<Car> sortByYear(){
         Comparator selectComparator = new YearComparator();
         Collections.sort(cars, selectComparator);
+        return cars;
     }
-    public void sortByYearDesc(){
+    public List<Car> sortByYearDesc(){
         Comparator selectComparator = new YearComparatorDesc();
         Collections.sort(cars, selectComparator);
+        return cars;
     }
-    public void sortByMileage(){
+    public List<Car> sortByMileage(){
         Comparator selectComparator = new MileageComparator();
         Collections.sort(cars, selectComparator);
+        return cars;
     }
-    public void sortByMileageDesc(){
+    public List<Car> sortByMileageDesc(){
         Comparator selectComparator = new MileageComparatorDesc();
         Collections.sort(cars, selectComparator);
+        return cars;
     }
     public Car findByBrand(String value){
         for (Car each : cars ){
@@ -99,16 +100,17 @@ public class CarStorage  {
         Scanner scan2 = new Scanner(System.in);
         int number = scan2.nextInt();
         System.out.println ("Your number is " + number);
+        List<Car> listCars = null;
         switch (number) {
-            case 1: sortByBrand(); break;
-            case 2: sortByBrandDesc(); break;
-            case 3: sortByYear(); break;
-            case 4: sortByYearDesc(); break;
-            case 5: sortByMileage(); break;
-            case 6: sortByMileageDesc(); break;
+            case 1: listCars = sortByBrand(); break;
+            case 2: listCars = sortByBrandDesc(); break;
+            case 3: listCars = sortByYear(); break;
+            case 4: listCars = sortByYearDesc(); break;
+            case 5: listCars = sortByMileage(); break;
+            case 6: listCars = sortByMileageDesc(); break;
             default: System.out.println ("**** Sort by Id ****");
         }
-        print();
+        new PrintCars(listCars);
     }
     public void find(){
         System.out.println("***Find   1-Brand;2-Model;3-Year;4-Mileage");
