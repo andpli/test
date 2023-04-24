@@ -1,4 +1,4 @@
-package Main;
+package main;
 
 public class Car implements Comparable<Car>{
     private int id;

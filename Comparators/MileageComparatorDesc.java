@@ -1,5 +1,5 @@
-package Comparators;
-import Main.Car;
+package comparators;
+import main.Car;
 import java.util.Comparator;
 
 public class MileageComparatorDesc implements Comparator<Car> {

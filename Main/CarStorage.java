@@ -1,16 +1,15 @@
-package Main;
-import Comparators.*;
+package main;
+import comparators.*;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
 
-public class Cars  {
+public class CarStorage  {
 
     private List<Car> cars = new ArrayList<>();
 
-    public void init() throws IOException {
-        System.out.println("Hello");
+    public CarStorage() throws IOException {
 
         FileReader fr = new FileReader("D:\\IdeaProjects\\test\\Data.txt");
         Scanner scan1 = new Scanner(fr);
@@ -34,12 +33,6 @@ public class Cars  {
     public void print(){
        for ( Car each : cars ){
                 System.out.println(each);
-        }
-    }
-    public void printById(int id){
-        for ( Car each : cars ){
-            if (each.getId() == id)
-            { System.out.println(each);}
         }
     }
 
@@ -67,34 +60,38 @@ public class Cars  {
         Comparator selectComparator = new MileageComparatorDesc();
         Collections.sort(cars, selectComparator);
     }
-    public void findByBrand(String value){
+    public Car findByBrand(String value){
         for (Car each : cars ){
             if ((each.getBrand().equals(value))) {
-                printById(each.getId());
+                return each;
             }
         }
+        return null;
     }
-    public void findByModel(String value){
+    public Car findByModel(String value){
         for (Car each : cars ){
             if ((each.getModel().equals(value))) {
-                printById(each.getId());
+                return each;
             }
         }
+        return null;
     }
 
-    public void findByYear(String value){
+    public Car findByYear(String value){
         for (Car each : cars ){
             if ((each.getYear() == Integer.parseInt(value))) {
-                printById(each.getId());
+                return each;
             }
         }
+        return null;
     }
-    public void findByMileage(String value){
+    public Car findByMileage(String value){
         for (Car each : cars ){
             if ((each.getMileage() == Integer.parseInt(value))) {
-                printById(each.getId());
+               return each;
             }
         }
+        return null;
     }
 
     public void sort(){
@@ -121,13 +118,14 @@ public class Cars  {
 
         Scanner scan3 = new Scanner(System.in);
         String value = scan3.nextLine();
-
+        Car ourCar = null;
         switch (number) {
-            case 1: findByBrand(value); break;
-            case 2: findByModel(value); break;
-            case 3: findByYear(value); break;
-            case 4: findByMileage(value); break;
+            case 1: ourCar = findByBrand(value); break;
+            case 2: ourCar = findByModel(value); break;
+            case 3: ourCar = findByYear(value); break;
+            case 4: ourCar = findByMileage(value); break;
         }
+        PrintCar ourCarPrint = new PrintCar(ourCar);
     }
 
 }
