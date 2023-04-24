@@ -14,15 +14,35 @@ public class Car implements Comparable<Car>{
         this.mileage = m;
     }
 
+    @Override
+    public int hashCode() {
+        int result = model == null ? 0 : model.hashCode();
+        result = 31 * result + brand == null ? 0 : brand.hashCode();
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Car car = (Car) obj;
+        if ((model == null && car.model != null) || (model != null && car.model == null) ||
+            (brand == null && car.brand != null) || (brand != null && car.brand == null))
+            return false;
+
+        return  model.equals(car.model) && brand.equals(car.brand);
+    }
+
     public int getId() {
         return id;
     }
     public String getBrand() {
-        return brand;
+        return brand == null ? "" : brand;
     }
 
     public String getModel() {
-        return model;
+        return model == null ? "" : model;
     }
 
     public int getYear() {

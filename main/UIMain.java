@@ -46,5 +46,17 @@ public class UIMain extends CarStorage{
         if (number == 3) {new PrintCars(carsByYear);}
         else {new PrintCar(ourCar);}
     }
+    public void compare(String a, String b){
+        List<Car> listCars = getCars();
+        Car myCar = new Car(10000, a , b , 2030, 111111);
+        System.out.println ("Comparing... ");
+        for (Car each : listCars ){
+
+            if (each.equals(myCar)) {
+               System.out.println("fgfgfg");
+            }
+        }
+
+    }
 
 }

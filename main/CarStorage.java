@@ -14,7 +14,7 @@ public class CarStorage  {
     }
 
     public CarStorage() throws IOException {
-
+        cars.add(new Car(99999, null,null, 111, 4444));
         FileReader fr = new FileReader("D:\\IdeaProjects\\test\\Data.txt");
         Scanner scan1 = new Scanner(fr);
         int i = 1;
