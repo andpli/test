@@ -2,7 +2,7 @@ package main;
 
 public class PrintCar {
 
-    public PrintCar(main.Car ourCar) {
+    public PrintCar(Car ourCar) {
         if (ourCar != null) System.out.println(ourCar);
     }
 }
