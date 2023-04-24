@@ -1,7 +1,7 @@
 import main.Car;
 
 public class Tests {
-    public  Tests() {
+    public static void main(String[] args) throws Exception {
 
    Car my001 = new Car(1,null, null, 1,1);
    Car my002 = new Car(2,null, "", 1,1);
