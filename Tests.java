@@ -61,7 +61,7 @@ public class Tests {
     System.out.println(my003.equals(null));
     System.out.println(my004.equals(null));
     System.out.println(my009.equals(null));
-    System.out.println(my0010.equals(null));
+    System.out.println(my010.equals(null));
 
     }
 }
