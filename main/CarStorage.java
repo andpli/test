@@ -1,11 +1,13 @@
 package main;
 import comparators.*;
+
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
 
-public class CarStorage  {
+public class CarStorage implements main.FileReader {
 
     private List<Car> cars = new ArrayList<>();
 
@@ -15,21 +17,7 @@ public class CarStorage  {
 
     public CarStorage() throws IOException {
         cars.add(new Car(99999, null,null, 111, 4444));
-        FileReader fr = new FileReader("D:\\IdeaProjects\\test\\Data.txt");
-        Scanner scan1 = new Scanner(fr);
-        int i = 1;
-
-        String text;
-
-        while (scan1.hasNextLine()) {
-            text = scan1.nextLine();
-            String[] words = text.split(";");
-            int year = Integer.parseInt(words[2]);
-            int mileage = Integer.parseInt(words[3]);
-            cars.add(new Car(i, words[0], words[1], year, mileage));
-            i++;
-           }
-        fr.close();
+        getInfoFromFile();
     }
 
     public List<Car> sortByBrand(){
@@ -64,7 +52,7 @@ public class CarStorage  {
     }
     public Car findByBrand(String value){
         for (Car each : cars ){
-            if ((each.getBrand().equals(value))) {
+            if ((value.equals(each.getBrand()))) {
                 return each;
             }
         }
@@ -72,7 +60,7 @@ public class CarStorage  {
     }
     public Car findByModel(String value){
         for (Car each : cars ){
-            if ((each.getModel().equals(value))) {
+            if ((value.equals(each.getModel()))) {
                 return each;
             }
         }
@@ -98,6 +86,25 @@ public class CarStorage  {
     }
 
 
+    @Override
+    public String getSeparator() {
+        return ";";
+    }
+
+    @Override
+    public String getPath() {
+        return "D:\\IdeaProjects\\test\\DataCars.txt";
+    }
+
+
+    @Override
+    public void doParsing(String line, int i) {
+        String[] words = line.split(getSeparator());
+        int year = Integer.parseInt(words[2]);
+        int mileage = Integer.parseInt(words[3]);
+        cars.add(new Car(i, words[0], words[1], year, mileage));
+
+    }
 }
 
 

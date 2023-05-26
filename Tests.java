@@ -1,19 +1,55 @@
 import main.Car;
+import main.Person;
+
+import java.util.*;
 
 public class Tests {
     public static void main(String[] args) throws Exception {
 
-   Car my001 = new Car(1,null, null, 1,1);
-   Car my002 = new Car(2,null, "", 1,1);
-   Car my003 = new Car(3,"", null, 1,1);
-   Car my004 = new Car(4,"", "", 1,1);
-   Car my005 = new Car(5,"A1", "A2", 1,1);
-   Car my006 = new Car(6,"A1", "A2", 1,1);
-   Car my007 = new Car(7,"A1", "A2", 1,1);
-   Car my008 = new Car(8,"A1", "B2", 1,1);
-   Car my009 = new Car(9,"B1", "A2", 1,1);
-   Car my010 = new Car(10,"B1", "B2", 1,1);
+    Car my001 = new Car(1,null, null, 1,1);
+    Car my002 = new Car(2,null, "", 1,1);
+    Car my003 = new Car(3,"", null, 1,1);
+    Car my004 = new Car(4,"", "", 1,1);
+    Car my005 = new Car(5,"A1", "A2", 1,1);
+    Car my006 = new Car(6,"A1", "A2", 1,1);
+    Car my007 = new Car(7,"A1", "A2", 1,1);
+    Car my008 = new Car(8,"A1", "B2", 1,1);
+    Car my009 = new Car(9,"B1", "A2", 1,1);
+    Car my010 = new Car(10,"B1", "B2", 1,1);
 
+    Person pers001 = new Person("Andy","Temp");
+    Person pers002 = new Person("Andy","Temple");
+    Person pers003 = new Person("Andy","Temp");
+
+    ArrayList<Person> personList = new ArrayList<Person>();
+    personList.add(pers001);
+    personList.add(pers002);
+    personList.add(pers003);
+
+    Map<Person,Car>  personMap = new HashMap<>();
+    personMap.put(pers001,my005);
+    personMap.put(pers003,my010);
+  //  personMap.put(3,pers003);
+
+    Set<Person> personSet = new HashSet<>();
+    personSet.add(pers001);
+    personSet.add(pers002);
+    personSet.add(pers003);
+
+    System.out.println(personList);
+    System.out.println(personMap);
+    System.out.println(personSet);
+
+    System.out.println("Person");
+    System.out.println(pers001.equals(pers002));
+    System.out.println(pers002.equals(pers001));
+    System.out.println(pers003.equals(pers002));
+    System.out.println(pers002.equals(pers003));
+    System.out.println(pers001.equals(pers003));
+    System.out.println(pers003.equals(pers001));
+
+    System.out.println("");
+    System.out.println("Cars");
     System.out.println("Reflexive ...");
     System.out.println(my001.equals(my001));
     System.out.println(my002.equals(my002));

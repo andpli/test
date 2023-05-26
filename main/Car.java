@@ -17,7 +17,7 @@ public class Car implements Comparable<Car>{
     @Override
     public int hashCode() {
         int result = model == null ? 0 : model.hashCode();
-        result = 31 * result + brand == null ? 0 : brand.hashCode();
+        result = 31 * result + (brand == null ? 0 : brand.hashCode());
         return result;
     }
 
@@ -38,10 +38,15 @@ public class Car implements Comparable<Car>{
         return id;
     }
     public String getBrand() {
+        return brand;
+    }
+
+    public String getNotNullBrand() {
         return brand == null ? "" : brand;
     }
 
-    public String getModel() {
+    public String getModel() { return model; }
+    public String getNotNullModel() {
         return model == null ? "" : model;
     }
 

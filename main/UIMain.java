@@ -53,7 +53,7 @@ public class UIMain extends CarStorage{
         for (Car each : listCars ){
 
             if (each.equals(myCar)) {
-               System.out.println("fgfgfg");
+               System.out.println(each);
             }
         }
 
