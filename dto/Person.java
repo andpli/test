@@ -1,4 +1,4 @@
-package main;
+package dto;
 
 public class Person {
     private String firstName;

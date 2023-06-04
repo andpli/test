@@ -1,5 +1,7 @@
 package main;
 
+import dto.Car;
+
 import java.util.List;
 
 public class PrintCars {

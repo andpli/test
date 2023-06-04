@@ -1,5 +1,7 @@
 package main;
 
+import dto.Car;
+
 public class PrintCar {
 
     public PrintCar(Car ourCar) {

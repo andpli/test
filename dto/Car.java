@@ -1,4 +1,4 @@
-package main;
+package dto;
 
 public class Car implements Comparable<Car>{
     private int id;

@@ -1,5 +1,5 @@
 package comparators;
-import main.Car;
+import dto.Car;
 import java.util.Comparator;
 
 public class BrandComparator implements Comparator<Car> {

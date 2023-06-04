@@ -1,3 +1,4 @@
+brand;model;year;mileage
 Volvo;XC90;2000;255555
 Toyota;Corolla;2020;333444
 Audi;A6 Allroad;2009;555555

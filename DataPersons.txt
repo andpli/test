@@ -1,7 +1,7 @@
-firstName,lastName
-Andy,Temple
-Petr,Temple
-Bruce,Brill
-Steve,Curd
-Paul,Cox
-Steven,Wind
+firstName,Age,lastName
+Andy,11,Temple
+Petr,111,Temple
+Bruce,1212,Brill
+Steve,2,Curd
+Paul,,Cox
+Steven,,Wind

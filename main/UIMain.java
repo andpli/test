@@ -1,10 +1,13 @@
 package main;
 
+import dto.Car;
+import storage.CarStorage;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
-public class UIMain extends CarStorage{
+public class UIMain extends CarStorage {
 
     public UIMain() throws IOException {
 
