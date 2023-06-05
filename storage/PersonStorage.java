@@ -5,6 +5,7 @@ import dto.Person;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class PersonStorage implements main.ReaderOfFiles {
     private List<Person> persons = new ArrayList<>();
@@ -26,7 +27,9 @@ public class PersonStorage implements main.ReaderOfFiles {
     }
 
     @Override
-    public void doParsing(String line, int lineNo) {
+    public void doParsing(String line, int lineNo, Map<String, Integer> fields) {
+        int liFirst = fields.getOrDefault("firstName",-1);
+        int liLast = fields.getOrDefault("lastName",-1);
         String firstName = "";
         String lastName = "";
         String[] words = line.split(getSeparator());
@@ -34,19 +37,5 @@ public class PersonStorage implements main.ReaderOfFiles {
         if (liLast >= 0) { lastName = words[liLast];}
         persons.add(new Person(firstName, lastName));
     }
-    int liFirst = -1;
-    int liLast = -1;
-    @Override
-    public void getNumberOfFields(String line) {
-        String[] words = line.split(getSeparator());
-        int li = 0;
-        for (String each : words ){
-            switch (each)
-            {
-                case "firstName" : liFirst = li; break;
-                case "lastName" : liLast  = li;
-            }
-            li++;
-        }
-    }
+
 }

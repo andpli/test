@@ -5,16 +5,8 @@ import java.util.*;
 
 public class Tests {
     public static void main(String[] args) throws Exception {
-        String line = "a,b,c,d";
-        String[] words = line.split(",");
-        int li = 0;
-        for (String each : words) {
-         System.out.println(each);
-        }
-        li++;
-    }
 
-       /*
+
     Car my001 = new Car(1,null, null, 1,1);
     Car my002 = new Car(2,null, "", 1,1);
     Car my003 = new Car(3,"", null, 1,1);
@@ -110,5 +102,5 @@ public class Tests {
 
     }
 
-        */
+  
 }

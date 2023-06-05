@@ -84,7 +84,6 @@ public class CarStorage implements main.ReaderOfFiles {
         return null;
     }
 
-
     @Override
     public String getSeparator() {
         return ";";
@@ -94,35 +93,21 @@ public class CarStorage implements main.ReaderOfFiles {
     public String getPath() {
         return "D:\\IdeaProjects\\test\\DataCars.txt";
     }
-    int liYear = -1;
-    int liMileage = -1;
-    int liBrand= -1;
-    int liModel= -1;
-    @Override
-
-    public void getNumberOfFields(String line) {
-        String[] words = line.split(getSeparator());
-        int li = 0;
-        for (String each : words ){
-            switch (each)
-            {
-                case "year" :    liYear    = li; break;
-                case "mileage" : liMileage = li; break;
-                case "brand" :   liBrand   = li; break;
-                case "model" :   liModel   = li;
-            }
-            li++;
-        }
-    }
 
     @Override
-    public void doParsing(String line, int i) {
+    public void doParsing(String line, int i, Map<String, Integer> fields) {
         String[] words = line.split(getSeparator());
+        int liYear = fields.getOrDefault("year",-1);
+        int liMileage = fields.getOrDefault("mileage",-1);
+        int liBrand= fields.getOrDefault("brand",-1);
+        int liModel= fields.getOrDefault("model",-1);
+
         int year = 0;
         int mileage = 0;
         String model = "";
         String brand = "";
-        if (liYear >= 0) { year = Integer.parseInt(words[liYear]);}
+
+        if (liYear >= 0 ) { year = Integer.parseInt(words[liYear]);}
         if (liMileage >= 0) { mileage = Integer.parseInt(words[liMileage]);}
         if (liModel >= 0) { model = words[liModel];}
         if (liBrand >= 0) { brand = words[liBrand];}
