@@ -1,12 +1,14 @@
 package storage;
 import comparators.*;
 import dto.Car;
+import main.StorageReader;
 
 import java.io.IOException;
 import java.util.*;
 
 
-public class CarStorage implements main.ReaderOfFiles {
+
+public class CarStorage extends MainStorage implements StorageReader {
 
     private List<Car> cars = new ArrayList<>();
 
@@ -15,10 +17,12 @@ public class CarStorage implements main.ReaderOfFiles {
     }
 
     public CarStorage() throws IOException {
-        cars.add(new Car(99999, null,null, 111, 4444));
-        getInfoFromFile();
+      //  cars.add(new Car(99999, null,null, 111, 4444));
+        getInfoFromFile("");
     }
-
+    public CarStorage(String path) throws IOException {
+        getInfoFromFile(path);
+    }
     public List<Car> sortByBrand(){
         Comparator selectComparator = new BrandComparator();
         Collections.sort(cars, selectComparator);
@@ -95,24 +99,32 @@ public class CarStorage implements main.ReaderOfFiles {
     }
 
     @Override
-    public void doParsing(String line, int i, Map<String, Integer> fields) {
+    public Map<Integer, String> doParsing(String line, Map<String, Integer> fields) {
+        int i = 0;
+        String lcValue;
+        Map<Integer, String> values = new HashMap<>();
         String[] words = line.split(getSeparator());
-        int liYear = fields.getOrDefault("year",-1);
-        int liMileage = fields.getOrDefault("mileage",-1);
-        int liBrand= fields.getOrDefault("brand",-1);
-        int liModel= fields.getOrDefault("model",-1);
+        for (String each : getFieldsName() ){
+            Integer liIndex = fields.get(each);
+            lcValue = "";
+            if (liIndex != null) { lcValue = words[liIndex];}
 
-        int year = 0;
-        int mileage = 0;
-        String model = "";
-        String brand = "";
+            values.put(i, lcValue);
+            i++;
+        }
+        return values;
 
-        if (liYear >= 0 ) { year = Integer.parseInt(words[liYear]);}
-        if (liMileage >= 0) { mileage = Integer.parseInt(words[liMileage]);}
-        if (liModel >= 0) { model = words[liModel];}
-        if (liBrand >= 0) { brand = words[liBrand];}
-        cars.add(new Car(i, brand, model, year, mileage));
+    }
 
+    @Override
+    public void addToStorage(int lineNo, Map<Integer, String> values) {
+        cars.add(new Car(lineNo, values.get(0), values.get(1),
+                Integer.parseInt(values.get(2)), Integer.parseInt(values.get(3))));
+    }
+
+    @Override
+    public List<String> getFieldsName() {
+        return Arrays.asList("brand", "model", "year", "mileage");
     }
 }
 

@@ -4,9 +4,9 @@ public class Car implements Comparable<Car>{
     private int id;
     private String brand;
     private String model;
-    private int year;
-    private int mileage;
-    public Car (int i, String a, String b, int y, int m) {
+    private Integer year;
+    private Integer mileage;
+    public Car (int i, String a, String b, Integer y, Integer m) {
         this.id = i;
         this.brand = a;
         this.model = b;

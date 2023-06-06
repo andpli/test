@@ -1,21 +1,22 @@
 package storage;
 
 import dto.Person;
+import main.StorageReader;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class PersonStorage implements main.ReaderOfFiles {
+public class PersonStorage extends MainStorage implements StorageReader {
     private List<Person> persons = new ArrayList<>();
     public List<Person> getPersons() {
         return persons;
     }
     public PersonStorage() throws IOException {
-        getInfoFromFile();
+        getInfoFromFile("");
     }
-
+    public PersonStorage(String path) throws IOException {
+        getInfoFromFile(path);
+    }
     @Override
     public String getSeparator() {
         return ",";
@@ -27,15 +28,31 @@ public class PersonStorage implements main.ReaderOfFiles {
     }
 
     @Override
-    public void doParsing(String line, int lineNo, Map<String, Integer> fields) {
-        int liFirst = fields.getOrDefault("firstName",-1);
-        int liLast = fields.getOrDefault("lastName",-1);
-        String firstName = "";
-        String lastName = "";
+    public Map<Integer, String> doParsing(String line, Map<String, Integer> fields) {
+
+        int i = 0;
+        String lcValue;
+        Map<Integer, String> values = new HashMap<>();
         String[] words = line.split(getSeparator());
-        if (liFirst >= 0) { firstName = words[liFirst];}
-        if (liLast >= 0) { lastName = words[liLast];}
-        persons.add(new Person(firstName, lastName));
+        for (String each : getFieldsName() ){
+            Integer liIndex = fields.get(each);
+            lcValue = "";
+            if (liIndex != null) { lcValue = words[liIndex];}
+
+            values.put(i, lcValue);
+            i++;
+        }
+        return values;
+
     }
 
+    @Override
+    public void addToStorage(int lineNo, Map<Integer, String> values) {
+        persons.add(new Person(values.get(0), values.get(1)));
+    }
+
+    @Override
+    public List<String> getFieldsName() {
+        return Arrays.asList("lastName", "lastName");
+    }
 }

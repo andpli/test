@@ -2,15 +2,19 @@ package main;
 
 import dto.Car;
 import storage.CarStorage;
+import storage.PersonStorage;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
-public class UIMain extends CarStorage {
-
+public class UIMain {
+    CarStorage myCar = null;
     public UIMain() throws IOException {
-
+        myCar =  new CarStorage();
+        System.out.println(myCar.getCars());
+        PersonStorage myPersons =  new PersonStorage();
+        System.out.println(myPersons.getPersons());
     }
 
     public void sort(){
@@ -18,14 +22,14 @@ public class UIMain extends CarStorage {
         Scanner scan2 = new Scanner(System.in);
         int number = scan2.nextInt();
         System.out.println ("Your number is " + number);
-        List<Car> listCars = getCars();
+        List<Car> listCars = myCar.getCars();
         switch (number) {
-            case 1: listCars = sortByBrand(); break;
-            case 2: listCars = sortByBrandDesc(); break;
-            case 3: listCars = sortByYear(); break;
-            case 4: listCars = sortByYearDesc(); break;
-            case 5: listCars = sortByMileage(); break;
-            case 6: listCars = sortByMileageDesc(); break;
+            case 1: listCars = myCar.sortByBrand(); break;
+            case 2: listCars = myCar.sortByBrandDesc(); break;
+            case 3: listCars = myCar.sortByYear(); break;
+            case 4: listCars = myCar.sortByYearDesc(); break;
+            case 5: listCars = myCar.sortByMileage(); break;
+            case 6: listCars = myCar.sortByMileageDesc(); break;
             default: System.out.println ("**** Sort by Id ****");
         }
         new PrintCars(listCars);
@@ -41,16 +45,16 @@ public class UIMain extends CarStorage {
         Car ourCar = null;
         List<Car> carsByYear = null;
         switch (number) {
-            case 1: ourCar = findByBrand(value); break;
-            case 2: ourCar = findByModel(value); break;
-            case 3: carsByYear = findByYear(value); break;
-            case 4: ourCar = findByMileage(value); break;
+            case 1: ourCar = myCar.findByBrand(value); break;
+            case 2: ourCar = myCar.findByModel(value); break;
+            case 3: carsByYear = myCar.findByYear(value); break;
+            case 4: ourCar = myCar.findByMileage(value); break;
         }
         if (number == 3) {new PrintCars(carsByYear);}
         else {new PrintCar(ourCar);}
     }
     public void compare(String a, String b){
-        List<Car> listCars = getCars();
+        List<Car> listCars = myCar.getCars();
         Car myCar = new Car(10000, a , b , 2030, 111111);
         System.out.println ("Comparing... ");
         for (Car each : listCars ){
