@@ -53,6 +53,6 @@ public class PersonStorage extends MainStorage implements StorageReader {
 
     @Override
     public List<String> getFieldsName() {
-        return Arrays.asList("lastName", "lastName");
+        return Arrays.asList("firstName", "lastName");
     }
 }

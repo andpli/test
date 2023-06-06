@@ -17,7 +17,7 @@ public interface StorageReader {
         FileReader fr = new FileReader(path);
         Scanner scan1 = new Scanner(fr);
         Map<String,Integer> fields = null;
-        Map<Integer,String> values = null;
+        Map<Integer,String> values;
         int i = 1;
         String text;
         while (scan1.hasNextLine()) {
@@ -33,7 +33,6 @@ public interface StorageReader {
 
     default Map<String, Integer> getNumberOfFields(String text){
       Map<String, Integer> fields = new HashMap<>();
-      Map<Integer, String> values = new HashMap<>();
       String[] words = text.split(getSeparator());
       int i = 0;
       for (String each : words ){
