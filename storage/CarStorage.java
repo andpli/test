@@ -8,7 +8,7 @@ import java.util.*;
 
 
 
-public class CarStorage extends MainStorage implements StorageReader {
+public class CarStorage extends MainStorage {
 
     private List<Car> cars = new ArrayList<>();
 
@@ -96,24 +96,6 @@ public class CarStorage extends MainStorage implements StorageReader {
     @Override
     public String getPath() {
         return "D:\\IdeaProjects\\test\\DataCars.txt";
-    }
-
-    @Override
-    public Map<Integer, String> doParsing(String line, Map<String, Integer> fields) {
-        int i = 0;
-        String lcValue;
-        Map<Integer, String> values = new HashMap<>();
-        String[] words = line.split(getSeparator());
-        for (String each : getFieldsName() ){
-            Integer liIndex = fields.get(each);
-            lcValue = "";
-            if (liIndex != null) { lcValue = words[liIndex];}
-
-            values.put(i, lcValue);
-            i++;
-        }
-        return values;
-
     }
 
     @Override
