@@ -14,7 +14,7 @@ public class CarStorage extends MainStorage {
     }
 
     public CarStorage() throws IOException {
-      // cars.add(new Car(null,null, 111, 4444));
+        cars.add(new Car(null,null, 111, 4444));
         getInfoFromFile(getPath());
     }
     public CarStorage(String path) throws IOException {
