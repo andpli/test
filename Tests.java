@@ -7,16 +7,16 @@ public class Tests {
     public static void main(String[] args) throws Exception {
 
 
-    Car my001 = new Car(1,null, null, 1,1);
-    Car my002 = new Car(2,null, "", 1,1);
-    Car my003 = new Car(3,"", null, 1,1);
-    Car my004 = new Car(4,"", "", 1,1);
-    Car my005 = new Car(5,"A1", "A2", 1,1);
-    Car my006 = new Car(6,"A1", "A2", 1,1);
-    Car my007 = new Car(7,"A1", "A2", 1,1);
-    Car my008 = new Car(8,"A1", "B2", 1,1);
-    Car my009 = new Car(9,"B1", "A2", 1,1);
-    Car my010 = new Car(10,"B1", "B2", 1,1);
+    Car my001 = new Car(null, null, 1,1);
+    Car my002 = new Car(null, "", 1,1);
+    Car my003 = new Car("", null, 1,1);
+    Car my004 = new Car("", "", 1,1);
+    Car my005 = new Car("A1", "A2", 1,1);
+    Car my006 = new Car("A1", "A2", 1,1);
+    Car my007 = new Car("A1", "A2", 1,1);
+    Car my008 = new Car("A1", "B2", 1,1);
+    Car my009 = new Car("B1", "A2", 1,1);
+    Car my010 = new Car("B1", "B2", 1,1);
 
     Person pers001 = new Person("Andy","Temp");
     Person pers002 = new Person("Andy","Temple");

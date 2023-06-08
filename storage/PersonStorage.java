@@ -1,7 +1,6 @@
 package storage;
 
 import dto.Person;
-import main.StorageReader;
 
 import java.io.IOException;
 import java.util.*;
@@ -12,7 +11,7 @@ public class PersonStorage extends MainStorage {
         return persons;
     }
     public PersonStorage() throws IOException {
-        getInfoFromFile("");
+        getInfoFromFile(getPath());
     }
     public PersonStorage(String path) throws IOException {
         getInfoFromFile(path);
@@ -28,8 +27,9 @@ public class PersonStorage extends MainStorage {
     }
 
      @Override
-    public void addToStorage(int lineNo, Map<Integer, String> values) {
-        persons.add(new Person(values.get(0), values.get(1)));
+    public void addToStorage(Map<String,String> values) {
+        persons.add(new Person(values.get("firstName"),
+                               values.get("lastName")));
     }
 
     @Override

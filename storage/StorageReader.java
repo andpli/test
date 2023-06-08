@@ -1,4 +1,4 @@
-package main;
+package storage;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,18 +13,17 @@ public interface StorageReader {
     String getPath();
 
     default void getInfoFromFile(String path) throws IOException{
-        if (path.equals("")) {path = getPath();}
         FileReader fr = new FileReader(path);
         Scanner scan1 = new Scanner(fr);
         Map<String,Integer> fields = null;
-        Map<Integer,String> values;
+        Map<String,String> values;
         int i = 1;
         String text;
         while (scan1.hasNextLine()) {
             text = scan1.nextLine();
             if (i == 1) {fields = getNumberOfFields(text);}
             else { values = doParsing(text, fields);
-                   addToStorage(i, values);}
+                   addToStorage(values);}
             i++;
         }
         fr.close();
@@ -42,8 +41,8 @@ public interface StorageReader {
       return fields;
     }
 
-    Map<Integer, String> doParsing(String line, Map<String, Integer> fields);
+    Map<String, String> doParsing(String line, Map<String, Integer> fields);
 
 
-    void addToStorage(int lineNo, Map<Integer, String> values);
+    void addToStorage(Map<String, String> values);
 }

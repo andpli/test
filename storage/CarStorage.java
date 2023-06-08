@@ -1,12 +1,9 @@
 package storage;
 import comparators.*;
 import dto.Car;
-import main.StorageReader;
 
 import java.io.IOException;
 import java.util.*;
-
-
 
 public class CarStorage extends MainStorage {
 
@@ -17,8 +14,8 @@ public class CarStorage extends MainStorage {
     }
 
     public CarStorage() throws IOException {
-      //  cars.add(new Car(99999, null,null, 111, 4444));
-        getInfoFromFile("");
+      // cars.add(new Car(null,null, 111, 4444));
+        getInfoFromFile(getPath());
     }
     public CarStorage(String path) throws IOException {
         getInfoFromFile(path);
@@ -99,9 +96,11 @@ public class CarStorage extends MainStorage {
     }
 
     @Override
-    public void addToStorage(int lineNo, Map<Integer, String> values) {
-        cars.add(new Car(lineNo, values.get(0), values.get(1),
-                Integer.parseInt(values.get(2)), Integer.parseInt(values.get(3))));
+    public void addToStorage(Map<String, String> values) {
+        cars.add(new Car(values.get("brand"),
+                         values.get("model"),
+                         Integer.parseInt(values.get("year")),
+                         Integer.parseInt(values.get("mileage"))));
     }
 
     @Override

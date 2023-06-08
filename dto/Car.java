@@ -6,12 +6,14 @@ public class Car implements Comparable<Car>{
     private String model;
     private Integer year;
     private Integer mileage;
-    public Car (int i, String a, String b, Integer y, Integer m) {
-        this.id = i;
+    public int CarId = 1;
+    public Car (String a, String b, Integer y, Integer m) {
+        this.id = CarId;
         this.brand = a;
         this.model = b;
         this.year = y;
         this.mileage = m;
+        CarId++;
     }
 
     @Override

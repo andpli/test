@@ -55,7 +55,7 @@ public class UIMain {
     }
     public void compare(String a, String b){
         List<Car> listCars = myCar.getCars();
-        Car myCar = new Car(10000, a , b , 2030, 111111);
+        Car myCar = new Car( a , b , 2030, 111111);
         System.out.println ("Comparing... ");
         for (Car each : listCars ){
 
