@@ -13,11 +13,11 @@ public class CarStorage extends MainStorage {
         return cars;
     }
 
-    public CarStorage() throws IOException {
+    public CarStorage() throws IOException, NoSuchFieldException, IllegalAccessException, InstantiationException {
         cars.add(new Car(null,null, 111, 4444));
         getInfoFromFile(getPath());
     }
-    public CarStorage(String path) throws IOException {
+    public CarStorage(String path) throws IOException, NoSuchFieldException, IllegalAccessException, InstantiationException {
         getInfoFromFile(path);
     }
     public List<Car> sortByBrand(){

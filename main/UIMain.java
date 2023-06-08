@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class UIMain {
     CarStorage myCar = null;
-    public UIMain() throws IOException {
+    public UIMain() throws IOException, NoSuchFieldException, IllegalAccessException, InstantiationException {
         myCar =  new CarStorage();
         System.out.println(myCar.getCars());
         PersonStorage myPersons =  new PersonStorage();

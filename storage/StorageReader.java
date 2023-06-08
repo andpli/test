@@ -12,7 +12,7 @@ public interface StorageReader {
 
     String getPath();
 
-    default void getInfoFromFile(String path) throws IOException{
+    default void getInfoFromFile(String path) throws IOException, NoSuchFieldException, IllegalAccessException, InstantiationException {
         FileReader fr = new FileReader(path);
         Scanner scan1 = new Scanner(fr);
         Map<String,Integer> fields = null;
@@ -44,5 +44,5 @@ public interface StorageReader {
     Map<String, String> doParsing(String line, Map<String, Integer> fields);
 
 
-    void addToStorage(Map<String, String> values);
+    void addToStorage(Map<String, String> values) throws NoSuchFieldException, IllegalAccessException, InstantiationException;
 }

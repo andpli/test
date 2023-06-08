@@ -9,7 +9,9 @@ public class Person {
         this.lastName = lastName;
     }
 
+    public Person() {
 
+    }
 
         @Override
         public int hashCode() {
