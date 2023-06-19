@@ -6,10 +6,10 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.*;
 
-public class PersonStorage extends MainStorage {
-    private List<Person> persons = new ArrayList<>();
+public class PersonStorage extends AbstractStorage<Person> {
+
     public List<Person> getPersons() {
-        return persons;
+        return entity;
     }
     public PersonStorage() throws IOException, NoSuchFieldException, IllegalAccessException, InstantiationException {
        getInfoFromFile(getPath());
@@ -40,7 +40,7 @@ public class PersonStorage extends MainStorage {
              field.setAccessible(true);
              field.set(pers,values.get(field.getName()));
          }
-         persons.add(pers);
+         entity.add(pers);
     }
 
     @Override

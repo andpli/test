@@ -1,11 +1,14 @@
 package storage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class MainStorage implements StorageReader {
+public abstract class AbstractStorage<T> implements StorageReader {
+    public List<T> entity = new ArrayList<>();
     public abstract List<String> getFieldsName();
+
 
 
     public Map<String,String> doParsing(String line, Map<String, Integer> fields) {

@@ -1,39 +1,18 @@
 package storage;
 
 import dto.Car;
-import dto.Person;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestCarStorage {
-    @Test void checkCars() throws IOException, NoSuchFieldException, IllegalAccessException, InstantiationException {
-        CarStorage myCar = null;
-        myCar = new CarStorage("D:\\IdeaProjects\\test\\DataCars.txt");
-        System.out.println(myCar.getCars());
+public class TestPersonStorage {
+    @Test void checkPersons() throws IOException, NoSuchFieldException, IllegalAccessException, InstantiationException {
+        PersonStorage myPersons = null;
+        myPersons = new PersonStorage("D:\\IdeaProjects\\test\\DataPersons.txt");
+        System.out.println(myPersons.getPersons());
     }
-    @Test
-    void whenTestCase_thenPass() {
-        System.out.println("Running a dummyTest");
-      }
-
-
-        @Test
-        void testLucky() {
-            Car my001 = new Car("Toyota", "Corolla", 1,1);
-            System.out.println("Car tests!!! "
-                    + my001.getBrand() + " " +
-                   my001.getModel());
-            Car my002 = new Car("Toyota", "Corolla", 1,1);
-            assertEquals(my002.getId(), 2);
-            System.out.println("Car Id = 2");
-        }
-
-
-
 
 
    /*
