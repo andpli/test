@@ -11,9 +11,9 @@ public abstract class AbstractStorage<T> implements StorageReader {
     protected List<T> entities = new ArrayList<>();
     protected abstract List<String> getFieldsName();
 
-    protected abstract T newRow(Map<String, String> values);
+    protected abstract T newRow(Map<String, String> values) throws IllegalAccessException;
 
-    public void doParsing(String line, Map<String, Integer> fields) {
+    public void doParsing(String line, Map<String, Integer> fields) throws IllegalAccessException {
 
             String lcValue;
             Map<String, String> values = new HashMap<>();

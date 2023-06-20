@@ -52,9 +52,15 @@ public class PersonStorage extends AbstractStorage<Person> {
     }
 */
     @Override
-    protected Person newRow(Map<String, String> values) {
-        return new Person(values.get("firstName"),
-                          values.get("lastName")) ;
+    protected Person newRow(Map<String, String> values) throws IllegalAccessException {
+        Person pers = new Person();
+        Class<? extends Person> personClass = pers.getClass();
+        Field[] declaredFields = personClass.getDeclaredFields();
+        for (Field field :declaredFields) {
+            field.setAccessible(true);
+            field.set(pers,values.get(field.getName()));
+        }
+        return pers;
     }
 
     @Override

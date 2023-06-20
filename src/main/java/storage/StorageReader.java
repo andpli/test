@@ -42,6 +42,6 @@ public interface StorageReader {
       return fields;
     }
 
-    void doParsing(String line, Map<String, Integer> fields);
+    void doParsing(String line, Map<String, Integer> fields) throws IllegalAccessException;
 
    }
