@@ -8,11 +8,11 @@ import java.util.*;
 public class CarStorage extends AbstractStorage<Car> {
 
     public List<Car> getCars() {
-        return entity;
+        return entities;
     }
 
     public CarStorage() throws IOException, NoSuchFieldException, IllegalAccessException, InstantiationException {
-        entity.add(new Car(null,null, 111, 4444));
+        entities.add(new Car(null,null, 111, 4444));
         getInfoFromFile(getPath());
     }
     public CarStorage(String path) throws IOException, NoSuchFieldException, IllegalAccessException, InstantiationException {
@@ -20,36 +20,36 @@ public class CarStorage extends AbstractStorage<Car> {
     }
     public List<Car> sortByBrand(){
         Comparator selectComparator = new BrandComparator();
-        Collections.sort(entity, selectComparator);
-        return entity;
+        Collections.sort(entities, selectComparator);
+        return entities;
     }
     public List<Car> sortByBrandDesc(){
         Comparator selectComparator = new BrandComparatorDesc();
-        Collections.sort(entity, selectComparator);
-        return entity;
+        Collections.sort(entities, selectComparator);
+        return entities;
     }
     public List<Car> sortByYear(){
         Comparator selectComparator = new YearComparator();
-        Collections.sort(entity, selectComparator);
-        return entity;
+        Collections.sort(entities, selectComparator);
+        return entities;
     }
     public List<Car> sortByYearDesc(){
         Comparator selectComparator = new YearComparatorDesc();
-        Collections.sort(entity, selectComparator);
-        return entity;
+        Collections.sort(entities, selectComparator);
+        return entities;
     }
     public List<Car> sortByMileage(){
         Comparator selectComparator = new MileageComparator();
-        Collections.sort(entity, selectComparator);
-        return entity;
+        Collections.sort(entities, selectComparator);
+        return entities;
     }
     public List<Car> sortByMileageDesc(){
         Comparator selectComparator = new MileageComparatorDesc();
-        Collections.sort(entity, selectComparator);
-        return entity;
+        Collections.sort(entities, selectComparator);
+        return entities;
     }
     public Car findByBrand(String value){
-        for (Car each : entity ){
+        for (Car each : entities ){
             if ((value.equals(each.getBrand()))) {
                 return each;
             }
@@ -57,7 +57,7 @@ public class CarStorage extends AbstractStorage<Car> {
         return null;
     }
     public Car findByModel(String value){
-        for (Car each : entity ){
+        for (Car each : entities ){
             if ((value.equals(each.getModel()))) {
                 return each;
             }
@@ -67,7 +67,7 @@ public class CarStorage extends AbstractStorage<Car> {
 
     public List<Car> findByYear(String value){
         List<Car> local = new ArrayList<>();
-        for (Car each : entity ){
+        for (Car each : entities ){
             if ((each.getYear() == Integer.parseInt(value))) {
                 local.add(each);
             }
@@ -75,7 +75,7 @@ public class CarStorage extends AbstractStorage<Car> {
         return local;
     }
     public Car findByMileage(String value){
-        for (Car each : entity ){
+        for (Car each : entities ){
             if ((each.getMileage() == Integer.parseInt(value))) {
                return each;
             }
@@ -93,12 +93,13 @@ public class CarStorage extends AbstractStorage<Car> {
         return "D:\\IdeaProjects\\test\\DataCars.txt";
     }
 
+
     @Override
-    public void addToStorage(Map<String, String> values) {
-        entity.add(new Car(values.get("brand"),
-                         values.get("model"),
-                         Integer.parseInt(values.get("year")),
-                         Integer.parseInt(values.get("mileage"))));
+    protected Car newRow(Map<String, String> values) {
+        return new Car(values.get("brand"),
+                values.get("model"),
+                Integer.parseInt(values.get("year")),
+                Integer.parseInt(values.get("mileage")));
     }
 
     @Override

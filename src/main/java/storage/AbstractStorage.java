@@ -1,17 +1,19 @@
 package storage;
 
+import dto.Car;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public abstract class AbstractStorage<T> implements StorageReader {
-    public List<T> entity = new ArrayList<>();
-    public abstract List<String> getFieldsName();
+    protected List<T> entities = new ArrayList<>();
+    protected abstract List<String> getFieldsName();
 
+    protected abstract T newRow(Map<String, String> values);
 
-
-    public Map<String,String> doParsing(String line, Map<String, Integer> fields) {
+    public void doParsing(String line, Map<String, Integer> fields) {
 
             String lcValue;
             Map<String, String> values = new HashMap<>();
@@ -24,7 +26,8 @@ public abstract class AbstractStorage<T> implements StorageReader {
                 values.put(each, lcValue);
 
             }
-            return values;
+            entities.add(newRow(values));
+           // return values;
 
         }
     };

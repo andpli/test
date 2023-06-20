@@ -16,14 +16,15 @@ public interface StorageReader {
         FileReader fr = new FileReader(path);
         Scanner scan1 = new Scanner(fr);
         Map<String,Integer> fields = null;
-        Map<String,String> values;
+       // Map<String,String> values;
         int i = 1;
         String text;
         while (scan1.hasNextLine()) {
             text = scan1.nextLine();
             if (i == 1) {fields = getNumberOfFields(text);}
-            else { values = doParsing(text, fields);
-                   addToStorage(values);}
+            else { doParsing(text, fields);
+                  // addToStorage(values);
+            }
             i++;
         }
         fr.close();
@@ -41,8 +42,6 @@ public interface StorageReader {
       return fields;
     }
 
-    Map<String, String> doParsing(String line, Map<String, Integer> fields);
+    void doParsing(String line, Map<String, Integer> fields);
 
-
-    void addToStorage(Map<String, String> values) throws NoSuchFieldException, IllegalAccessException, InstantiationException;
-}
+   }
