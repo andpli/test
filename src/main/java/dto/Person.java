@@ -1,12 +1,17 @@
 package dto;
 
+import java.util.Date;
+
 public class Person {
     private String firstName;
     private String lastName;
+    private Date dateOfBirth;
 
-    public Person(String firstName, String lastName) {
+    public Person(String firstName, String lastName, Date dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+
     }
 
     public Person() {
@@ -36,7 +41,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return this.firstName + " " + this.lastName;
+        return this.firstName + " " + this.lastName + " " + this.dateOfBirth;
     }
 
     public String getFirstName() {

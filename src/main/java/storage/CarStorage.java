@@ -3,6 +3,7 @@ import comparators.*;
 import dto.Car;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.*;
 
 public class CarStorage extends AbstractStorage<Car> {
@@ -11,11 +12,11 @@ public class CarStorage extends AbstractStorage<Car> {
         return entities;
     }
 
-    public CarStorage() throws IOException, NoSuchFieldException, IllegalAccessException, InstantiationException {
+    public CarStorage() throws IOException, IllegalAccessException, ParseException {
         entities.add(new Car(null,null, 111, 4444));
         getInfoFromFile(getPath());
     }
-    public CarStorage(String path) throws IOException, NoSuchFieldException, IllegalAccessException, InstantiationException {
+    public CarStorage(String path) throws IOException, IllegalAccessException, ParseException {
         getInfoFromFile(path);
     }
     public List<Car> sortByBrand(){
@@ -90,7 +91,7 @@ public class CarStorage extends AbstractStorage<Car> {
 
     @Override
     public String getPath() {
-        return "D:\\IdeaProjects\\test\\DataCars.txt";
+        return "DataCars.txt";
     }
 
 
@@ -103,7 +104,7 @@ public class CarStorage extends AbstractStorage<Car> {
     }
 
     @Override
-    public List<String> getFieldsName() {
+    public List<String> getFieldNames() {
         return Arrays.asList("brand", "model", "year", "mileage");
     }
 }

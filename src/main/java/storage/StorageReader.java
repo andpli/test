@@ -2,6 +2,7 @@ package storage;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -12,18 +13,16 @@ public interface StorageReader {
 
     String getPath();
 
-    default void getInfoFromFile(String path) throws IOException, NoSuchFieldException, IllegalAccessException, InstantiationException {
+    default void getInfoFromFile(String path) throws IOException, IllegalAccessException, ParseException {
         FileReader fr = new FileReader(path);
         Scanner scan1 = new Scanner(fr);
         Map<String,Integer> fields = null;
-       // Map<String,String> values;
         int i = 1;
         String text;
         while (scan1.hasNextLine()) {
             text = scan1.nextLine();
             if (i == 1) {fields = getNumberOfFields(text);}
             else { doParsing(text, fields);
-                  // addToStorage(values);
             }
             i++;
         }
@@ -42,6 +41,6 @@ public interface StorageReader {
       return fields;
     }
 
-    void doParsing(String line, Map<String, Integer> fields) throws IllegalAccessException;
+    void doParsing(String line, Map<String, Integer> fields) throws IllegalAccessException, ParseException;
 
    }

@@ -6,7 +6,7 @@ import java.util.*;
 public class Tests {
     public static void main(String[] args) throws Exception {
 
-
+/*
     Car my001 = new Car(null, null, 1,1);
     Car my002 = new Car(null, "", 1,1);
     Car my003 = new Car("", null, 1,1);
@@ -99,8 +99,8 @@ public class Tests {
     System.out.println(my004.equals(null));
     System.out.println(my009.equals(null));
     System.out.println(my010.equals(null));
-
+ */
     }
 
-  
+
 }
