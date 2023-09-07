@@ -1,5 +1,5 @@
 package main;
-    
+
 import dto.Car;
 import storage.CarStorage;
 import storage.PersonStorage;
